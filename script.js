@@ -3,14 +3,18 @@ let gamePattern = [];
 let userClickedPattern = [];
 
 function changeTitle(text) {
-  $("#level-title").text(text);
+  $("#level-title").slideDown(50, function () {
+    $("#level-title").text(text);
+  });
 }
 
 function nextSequence() {
   const randomNumber = Math.floor(Math.random() * 4);
-  animatePress(buttonColors[randomNumber]);
   gamePattern.push(buttonColors[randomNumber]);
   changeTitle(`Level ${gamePattern.length}`);
+
+  animatePress(buttonColors[randomNumber]);
+
   playSound(buttonColors[randomNumber]);
   userClickedPattern = [];
 }
@@ -34,13 +38,14 @@ function gameOver() {
   setTimeout(function () {
     $("body").removeClass("game-over");
   }, 200);
-  changeTitle("Press A Key to Start");
+  changeTitle("Game Over. Click the button to start again!");
 }
 
 function checkAnswer() {
   const latestIndex = userClickedPattern.length - 1;
   if (userClickedPattern[latestIndex] === gamePattern[latestIndex]) {
     if (gamePattern.length === userClickedPattern.length) {
+      $("#level-title").slideUp(75, function () {});
       setTimeout(nextSequence, 1000);
     }
   } else {
@@ -49,7 +54,7 @@ function checkAnswer() {
 }
 
 $(".btn").click(function (e) {
-  $(this).fadeOut(50).fadeIn(50);
+  $(this).fadeOut(100).fadeIn(100);
 
   playSound(this.id);
 
@@ -60,7 +65,7 @@ $(".btn").click(function (e) {
   checkAnswer(userClickedPattern.length);
 });
 
-$(document).keydown(function () {
+$(".start-btn").click(function () {
   if (gamePattern.length === 0) {
     nextSequence();
   }

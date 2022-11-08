@@ -1,20 +1,19 @@
 body {
   text-align: center;
-  background-color: #011F3F;
+  background-color: #011f3f;
 }
 
 #level-title {
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
   font-size: 3rem;
-  margin:  5%;
-  color: #FEF2BF;
+
+  color: #fef2bf;
 }
 
 .container {
   display: block;
   width: 50%;
   margin: auto;
-
 }
 
 .btn {
@@ -50,4 +49,26 @@ body {
 .pressed {
   box-shadow: 0 0 20px white;
   background-color: grey;
+}
+
+.start-btn {
+  font-family: "Press Start 2P", cursive;
+  font-weight: 900;
+  font-size: 36px;
+  color: white;
+  border: 3px solid white;
+  background-color: transparent;
+  margin-top: 2em;
+  padding: 1em;
+  width: 25%;
+}
+
+.start-btn:hover {
+  transition: all 0.5s;
+  background-color: rgb(130, 184, 184);
+}
+
+.slider {
+  height: 50px;
+  margin: 5%;
 }
